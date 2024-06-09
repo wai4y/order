@@ -1,10 +1,6 @@
 #!/bin/bash
 
 
-echo "Start building application..."
-./mvnw clean package -DskipTests
-echo "Finish building application."
-
 echo "Start setting up MySQL..."
 
 MYSQL_CONTAINER_NAME="mysql-db"
@@ -19,7 +15,7 @@ fi
 
 if docker ps --filter "name=$MYSQL_CONTAINER_NAME" --quiet; then
   echo "Starting MySQL container in detached mode..."
-  docker-compose up -d $MYSQL_CONTAINER_NAME
+  docker compose up -d $MYSQL_CONTAINER_NAME
 else
   echo "MySQL container is already running."
 fi
