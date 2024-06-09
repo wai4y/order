@@ -28,12 +28,11 @@ done
 
 echo "MySQL is up! Creating user..."
 
+SQL_COMMAND="CREATE USER IF NOT EXISTS '$NEW_USER'@'%' IDENTIFIED BY '$NEW_USER_PASSWORD';
+             GRANT SELECT, INSERT, UPDATE, DELETE, ALTER, CREATE, DROP ON \`$DATABASE_NAME\`.* TO \`$NEW_USER\`@'%';
+             FLUSH PRIVILEGES;"
 # Create the user and grant specific privileges
-docker exec -i $MYSQL_CONTAINER_NAME mysql -uroot -p"$MYSQL_ROOT_PASSWORD" <<EOF
-CREATE USER IF NOT EXISTS '$NEW_USER'@'%' IDENTIFIED BY '$NEW_USER_PASSWORD';
-GRANT SELECT, INSERT, UPDATE, DELETE, ALTER, CREATE, DROP ON \`$DATABASE_NAME\`.* TO \`$NEW_USER\`@'%';
-FLUSH PRIVILEGES;
-EOF
+docker exec -i $MYSQL_CONTAINER_NAME mysql -uroot -p"$MYSQL_ROOT_PASSWORD" -e "$SQL_COMMAND"
 
 echo "Finish setting up MySQL."
 
