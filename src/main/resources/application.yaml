@@ -2,7 +2,8 @@ spring:
   application:
     name: order-service
   jpa:
-    database: mysql
+    database: MYSQL
+    database-platform: org.hibernate.dialect.MySQL8Dialect
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:33066/order
