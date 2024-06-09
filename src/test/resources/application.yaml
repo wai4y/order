@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: order-service
+  jpa:
+    database: mysql
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url:
+    username:
+    password:
+server:
+  port: 8080
+
+google-map:
+  api-key:
+
