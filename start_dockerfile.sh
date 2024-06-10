@@ -36,4 +36,4 @@ docker exec -i $MYSQL_CONTAINER_NAME mysql -uroot -p"$MYSQL_ROOT_PASSWORD" -e "$
 
 echo "Finish setting up MySQL."
 
-echo ""
+echo "Please run 'docker compose -f docker-compose-dockerfile.yml up -d' to start the application."

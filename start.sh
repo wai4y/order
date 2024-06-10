@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Start mvn package..."
-./mvnw clean package
+./mvnw clean package -DskipTests
 # get above result 
 if [ -$? -ne 0 ]; then
   echo "Error: mvn package failed."
@@ -44,4 +44,4 @@ docker exec -i $MYSQL_CONTAINER_NAME mysql -uroot -p"$MYSQL_ROOT_PASSWORD" -e "$
 
 echo "Finish setting up MySQL."
 
-echo ""
+echo "Please run 'docker compose up -d' to start the application."

@@ -1,7 +1,8 @@
 
 ## Please following bellow steps to run the application
-### Prerequisition
+### Prerequisite
 -[ ] **Having JDK 17 installed in your machine**
+-[ ] **Having Docker installed in your machine**
 -[ ]  **`export` variables in your machine**
 ```shell
     # set up Google Map API key
@@ -26,12 +27,15 @@ chmod +x start.sh  # In order to avoid issues with file permissions
 docker compose up -d
 ```
 ---
+
 ### In case you don't have JDK 17 installed
-You can start with provided jar file in the root folder
+You can use provided Dockerfile in the root folder
+First run
 ```shell
 chomd +x start.sh
+./start_dockerfile.sh
 ```
-
+Then start with:
 ```shell
 docker compose -f docker-compose-dockerfile.yml up -d
 ```
