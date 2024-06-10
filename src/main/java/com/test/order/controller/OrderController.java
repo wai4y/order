@@ -27,19 +27,19 @@ public class OrderController {
 
     private final OrderService orderService;
 
-    @PostMapping("/order")
+    @PostMapping("/orders")
     public ResponseEntity<OrderDto> placeOrder(@Valid @RequestBody OrderRequest orderRequest) {
         return ResponseEntity.ok(orderService.placeOrder(orderRequest));
     }
 
-    @PatchMapping("/order/{id}")
+    @PatchMapping("/orders/{id}")
     public ResponseEntity<TakeOrderDto> takeOrder(
             @PathVariable @Positive(message = "Invalid order id, should be positive") Long id,
             @Valid @RequestBody TakeOrderRequest request) {
         return ResponseEntity.ok(orderService.takeOrder(id, request.getStatus()));
     }
 
-    @GetMapping("/order")
+    @GetMapping("/orders")
     public ResponseEntity<List<OrderDto>> getOrderList(
             @RequestParam("page") @Positive(message = "Invalid page number, should start from 1")
             Integer page,

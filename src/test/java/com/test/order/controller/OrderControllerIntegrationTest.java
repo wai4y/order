@@ -94,7 +94,7 @@ public class OrderControllerIntegrationTest extends TestContainerConfig {
             when(distanceMatrixApiRequest.awaitIgnoreError()).thenReturn(distanceMatrix);
 
             // then
-            mvc.perform(post("/order")
+            mvc.perform(post("/orders")
                             .contentType(MediaType.APPLICATION_JSON)
                             .content(request)
                     ).andExpect(status().isOk())
@@ -108,7 +108,7 @@ public class OrderControllerIntegrationTest extends TestContainerConfig {
     @ParameterizedTest(name = "Place order failed when request invalid: {0}")
     @MethodSource("invalidRequest")
     void placeOrderFailedWhenRequestInvalid(String request) throws Exception {
-        mvc.perform(post("/order")
+        mvc.perform(post("/orders")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(request)
         ).andExpect(status().isBadRequest());
@@ -206,7 +206,7 @@ public class OrderControllerIntegrationTest extends TestContainerConfig {
         orderEntity.setDistance(1000);
         OrderEntity save = orderRepository.save(orderEntity);
 
-        mvc.perform(patch("/order/" + save.getId())
+        mvc.perform(patch("/orders/" + save.getId())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(request)
         ).andExpect(status().isOk());
@@ -221,7 +221,7 @@ public class OrderControllerIntegrationTest extends TestContainerConfig {
                     "status": "xxx"
                 }
                 """;
-        mvc.perform(patch("/order/" + 1)
+        mvc.perform(patch("/orders/" + 1)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(request)
         ).andExpect(status().isBadRequest());
@@ -235,7 +235,7 @@ public class OrderControllerIntegrationTest extends TestContainerConfig {
                 {
                 }
                 """;
-        mvc.perform(patch("/order/" + 1)
+        mvc.perform(patch("/orders/" + 1)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(request)
         ).andExpect(status().isUnprocessableEntity());
@@ -249,7 +249,7 @@ public class OrderControllerIntegrationTest extends TestContainerConfig {
                     "status": "TAKEN"
                 }
                 """;
-        mvc.perform(patch("/order/abc")
+        mvc.perform(patch("/orders/abc")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(request)
         ).andExpect(status().isBadRequest());
@@ -262,7 +262,7 @@ public class OrderControllerIntegrationTest extends TestContainerConfig {
     @Test
     void getOrderSuccess() throws Exception {
         addOrder(10);
-        mvc.perform(get("/order" )
+        mvc.perform(get("/orders" )
                         .param("page", "1")
                         .param("limit", "10")
         ).andExpect(status().isOk())
@@ -276,7 +276,7 @@ public class OrderControllerIntegrationTest extends TestContainerConfig {
     @DisplayName("Get order success with pagination")
     void getOrderSuccessWithPagination() throws Exception {
         addOrder(10);
-        mvc.perform(get("/order" )
+        mvc.perform(get("/orders" )
                         .param("page", "2")
                         .param("limit", "2")
                 ).andExpect(status().isOk())
@@ -291,7 +291,7 @@ public class OrderControllerIntegrationTest extends TestContainerConfig {
     @DisplayName("Get order success with pagination return empty")
     void getOrderSuccessWithPaginationEmptyResult() throws Exception {
         addOrder(10);
-        mvc.perform(get("/order" )
+        mvc.perform(get("/orders" )
                         .param("page", "6")
                         .param("limit", "2")
                 ).andExpect(status().isOk())
@@ -303,7 +303,7 @@ public class OrderControllerIntegrationTest extends TestContainerConfig {
     @Test
     @DisplayName("Get order failed when page is invalid")
     void getOrderFailedWhenPageIsInvalid() throws Exception {
-        mvc.perform(get("/order" )
+        mvc.perform(get("/orders" )
                         .param("page", "0")
                         .param("limit", "10")
         ).andExpect(status().isBadRequest());
@@ -312,7 +312,7 @@ public class OrderControllerIntegrationTest extends TestContainerConfig {
     @Test
     @DisplayName("Get order failed when limit is invalid")
     void getOrderFailedWhenLimitIsInvalid() throws Exception {
-        mvc.perform(get("/order" )
+        mvc.perform(get("/orders" )
                 .param("page", "2")
                 .param("limit", "abc")
         ).andExpect(status().isBadRequest());
