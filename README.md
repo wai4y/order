@@ -1,9 +1,9 @@
 
 ## Please following bellow steps to run the application
 ### Prerequisite
--[ ] **Having JDK 17 installed in your machine**
--[ ] **Having Docker installed in your machine**
--[ ]  **`export` variables in your machine**
+- [ ] **Having JDK 17 installed in your machine**
+- [ ] **Having Docker installed in your machine**
+- [ ]  **`export` variables in your machine**
 ```shell
     # set up Google Map API key
     export GOOGLE_MAP_API_KEY=<api-key>
