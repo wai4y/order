@@ -1,14 +1,5 @@
 #!/bin/bash
 
-echo "Start mvn package..."
-./mvnw clean package
-# get above result 
-if [ -$? -ne 0 ]; then
-  echo "Error: mvn package failed."
-  exit 1
-fi
-echo "Finish mvn package..."
-
 echo "Start setting up MySQL..."
 
 MYSQL_CONTAINER_NAME="mysql-db"
@@ -23,7 +14,8 @@ fi
 
 if docker ps --filter "name=$MYSQL_CONTAINER_NAME" --quiet; then
   echo "Starting MySQL container in detached mode..."
-  docker compose up -d $MYSQL_CONTAINER_NAME
+  # if no jdk 17 installed
+  docker compose -f docker-compose-dockerfile.yml up -d $MYSQL_CONTAINER_NAME
 else
   echo "MySQL container is already running."
 fi

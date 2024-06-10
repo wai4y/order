@@ -1,17 +1,13 @@
 package com.test.order.controller;
 
-import com.test.order.controller.dto.OrderStatus;
 import com.test.order.controller.dto.request.TakeOrderRequest;
 import com.test.order.controller.dto.response.OrderDto;
 import com.test.order.controller.dto.response.TakeOrderDto;
 import com.test.order.service.OrderService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.format.annotation.NumberFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;

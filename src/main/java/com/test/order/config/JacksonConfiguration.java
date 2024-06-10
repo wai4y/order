@@ -12,12 +12,11 @@ import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 @Configuration
 public class JacksonConfiguration {
 
-       @Bean
+      /* @Bean
          public Jackson2ObjectMapperBuilder jackson2ObjectMapperBuilder() {
             return new Jackson2ObjectMapperBuilder()
-//                    .modules(MapperFeature.ALLOW_COERCION_OF_SCALARS => true)
                     .propertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE);
-        }
+        }*/
 
     @Bean
     public Jackson2ObjectMapperBuilderCustomizer customJackson() {
@@ -25,7 +24,6 @@ public class JacksonConfiguration {
             builder.serializationInclusion(JsonInclude.Include.NON_NULL);
             builder.failOnUnknownProperties(false);
             builder.serializerByType(Long.class, ToStringSerializer.instance);
-//            MapperFeature.ALLOW_COERCION_OF_SCALARS
         };
     }
 }

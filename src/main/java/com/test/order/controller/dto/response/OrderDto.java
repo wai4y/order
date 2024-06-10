@@ -1,6 +1,5 @@
 package com.test.order.controller.dto.response;
 
-import com.test.order.controller.dto.OrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
