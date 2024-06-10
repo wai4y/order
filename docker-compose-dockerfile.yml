@@ -15,7 +15,7 @@ services:
       - SPRING_DATASOURCE_PASSWORD=${NEW_USER_PASSWORD}
       - SPRING_DATA_REDIS_HOST=redis
       - SPRING_DATA_REDIS_PORT=6379
-      - GOOGLE_API_KEY=${GOOGLE_MAP_API_KEY}
+      - GOOGLE_MAP_API_KEY=${GOOGLE_MAP_API_KEY}
 
   mysql-db:
     container_name: mysql-db
