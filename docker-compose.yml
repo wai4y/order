@@ -8,7 +8,7 @@ services:
       - mysql-db
       - redis
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:33066/order?useUnicode=true&characterEncoding=utf-8
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/order?useUnicode=true&characterEncoding=utf-8
       - SPRING_DATASOURCE_USERNAME=order
       - SPRING_DATASOURCE_PASSWORD=${NEW_USER_PASSWORD}
       - SPRING_DATA_REDIS_HOST=redis

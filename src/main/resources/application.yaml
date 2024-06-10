@@ -3,6 +3,10 @@ spring:
     name: order-service
   jpa:
     database: MYSQL
+    properties:
+      hibernate:
+        boot:
+          allow_jdbc_metadata_access: false
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:33066/order
