@@ -116,11 +116,12 @@
                         <entrypoint>
                             <shell>sh</shell>
                             <option>-c</option>
-                            <arg>chmod +x /entrypoint.sh &amp;&amp; sync &amp;&amp; /entrypoint.sh</arg>
+                            <arg>java -cp $( cat /app/jib-classpath-file ) $( cat /app/jib-main-class-file )</arg>
                         </entrypoint>
                         <ports>
                             <port>8080</port>
                         </ports>
+                        <creationTime>USE_CURRENT_TIMESTAMP</creationTime>
                     </container>
                 </configuration>
             </plugin>

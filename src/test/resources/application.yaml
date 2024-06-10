@@ -2,15 +2,27 @@ spring:
   application:
     name: order-service
   jpa:
-    database: mysql
+    database: MYSQL
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url:
-    username:
+    url: jdbc:mysql://localhost:33066/order
+    username: order
     password:
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  mvc:
+    converters:
+      preferred-json-mapper: jackson
 server:
   port: 8080
 
 google-map:
   api-key:
+
+
+project:
+  version: "@project.version@"
+timestamp: "@timestamp@"
 

@@ -12,8 +12,8 @@
     export NEW_USER_PASSWORD=<user-password>
 ```
 
-PS: since run `./mvnw package` needs to install JDK first, I attached one jar file in root folder for Dockerfile usage
-then you don't have to set up `JAVA_HOME` 
+**If your machine has JDK 17 installed, please run `./mvnw clean package` in the project root folder first**
+
 
 ### run `start.sh`
 ```shell
@@ -23,8 +23,14 @@ chmod +x start.sh  # In order to avoid issues with file permissions
 ```
 
 ### start application
+**Command for machine with JDK 17 installed**
 ```shell
 docker compose up -d
+```
+
+**Command for machine without JDK 17 installed**
+```shell
+docker compose -f docker-compose-dockerfile.yml up -d
 ```
 
 ## Tech Stack
